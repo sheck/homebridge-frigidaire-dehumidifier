@@ -1,133 +1,124 @@
 {
-    "pluginAlias": "FrigidaireAppliance",
-    "pluginType": "platform",
-    "singular": true,
-    "footerDisplay": "Frigidaire Appliance Configuration",
-    "schema": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "Name",
-          "type": "string",
-          "required": true,
-          "default": "FrigidaireAppliance",
-          "placeholder": "e.g. Frigidaire Appliance"
-        },
-        "auth": {
-          "title": "Authorization",
-          "type": "object",
-          "properties": {
-            "username": {
-              "title": "Frigidaire Appliance Username",
-              "type": "string",
-              "required": true
-            },
-            "password": {
-              "title": "Frigidaire Appliance Password",
-              "type": "string",
-              "required": true
-            }
-          }
-        },
-          "deviceRefresh": {
-          "title": "Device Refresh Interval",
-          "type": "integer",
-          "default": 90,
-          "description": "Poll interval to obtain device updates in seconds. <b>Please note:</b> A very low value may cause lockout to your account and/or API errors.",
-          "minimum": 15,
-          "maximum": 3600
-        },
-        "dehumidifierMode": {
-          "title": "Dehumidifying Mode",
-          "type": "integer",
-          "description": "Homekit only has two mode dehumidifying modes <i>auto</i> and <i>dehumidifying</i>. When dehumidifying is selected this select will be map to Frigidaire appliance mode. ",
-          "required": true,
-          "default": 5,
-          "oneOf": [
-            {
-              "title": "DRY",
-              "enum": [
-                5
-              ]
-            },
-            {
-              "title": "CONTINUOUS",
-              "enum": [
-                8
-              ]
-            },
-            {
-              "title": "QUIET",
-              "enum": [
-                9
-              ]
-            }
-          ]
-          
-        },
-        "enableAirPurifier": {
-          "title": "Show Air Purifier Accessory",
-          "type": "boolean",
-          "default": true,
-          "description": "Expose an Air Purifier Accessory. May not be available in all models."
-        },
-        "sessionKeyRefresh": {
-          "title": "Session Key Refresh Interval",
-          "type": "integer",
-          "default": 9,
-          "description": "Session key only valid for only 12 hours. Time interval to proactivity refresh session key to prevent a fault. A value of 0 will disable refresh.",
-          "minimum": 0,
-          "maximum": 11
-        },
-        "excludedDevices": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "Device IDs"
-          }
-        },
-        "cid": {
-          "encoded": "101,57,99,52,97,99,55,51,45,101,57,52,101,45,52,98,51,55,45,98,49,102,101,45,98,57,53,54,102,53,54,56,100,97,97,48"
-        }
-      }
-    },
-    "layout": [{
-        "type": "fieldset",
-        "items": [
-          "name",
-          "auth.username",
-          "auth.password",
-          "deviceRefresh",
-          "dehumidifierMode",
-          "enableAirPurifier"
-        ]
+  "pluginAlias": "FrigidaireAppliance",
+  "pluginType": "platform",
+  "singular": true,
+  "footerDisplay": "Frigidaire Appliance Configuration",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "default": "FrigidaireAppliance",
+        "placeholder": "e.g. Frigidaire Appliance"
       },
-      {
-        "type": "fieldset",
-        "expandable": true,
-        "title": "Advanced Options",
-        "items": [
+      "auth": {
+        "title": "Authorization",
+        "type": "object",
+        "properties": {
+          "username": {
+            "title": "Frigidaire Appliance Username",
+            "type": "string",
+            "required": true
+          },
+          "password": {
+            "title": "Frigidaire Appliance Password",
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "deviceRefresh": {
+        "title": "Device Refresh Interval",
+        "type": "integer",
+        "default": 90,
+        "description": "Poll interval to obtain device updates in seconds. <b>Please note:</b> A very low value may cause lockout to your account and/or API errors.",
+        "minimum": 15,
+        "maximum": 3600
+      },
+      "dehumidifierMode": {
+        "title": "Dehumidifying Mode",
+        "type": "integer",
+        "description": "Homekit only has two mode dehumidifying modes <i>auto</i> and <i>dehumidifying</i>. When dehumidifying is selected this select will be map to Frigidaire appliance mode. ",
+        "required": true,
+        "default": 5,
+        "oneOf": [
           {
-            "key": "sessionKeyRefresh",
-            "description": "Session key only valid for only 12 hours. Time interval to proactivity refresh session key to prevent a fault. A value of 0 will disable refresh."
+            "title": "DRY",
+            "enum": [5]
           },
           {
-            "key": "excludedDevices",
-            "title": "Excluded Devices",
-            "description": "A list of device ID to exclude from HomeKit. Obtain the device ID from Homebridge startup log.",
-            "add": "Add Another Device",
-            "type": "array",
-            "items": [
-              {
-                "type": "fieldset",
-                "items": [
-                  "excludedDevices[]"
-                ]
-              }
-            ]
+            "title": "CONTINUOUS",
+            "enum": [8]
+          },
+          {
+            "title": "QUIET",
+            "enum": [9]
           }
         ]
+      },
+      "enableAirPurifier": {
+        "title": "Show Air Purifier Accessory",
+        "type": "boolean",
+        "default": true,
+        "description": "Expose an Air Purifier Accessory. May not be available in all models."
+      },
+      "sessionKeyRefresh": {
+        "title": "Session Key Refresh Interval",
+        "type": "integer",
+        "default": 9,
+        "description": "Session key only valid for only 12 hours. Time interval to proactivity refresh session key to prevent a fault. A value of 0 will disable refresh.",
+        "minimum": 0,
+        "maximum": 11
+      },
+      "excludedDevices": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "Device IDs"
+        }
+      },
+      "cid": {
+        "encoded": "101,57,99,52,97,99,55,51,45,101,57,52,101,45,52,98,51,55,45,98,49,102,101,45,98,57,53,54,102,53,54,56,100,97,97,48"
       }
-    ]
-  }
-  
+    }
+  },
+  "layout": [
+    {
+      "type": "fieldset",
+      "items": [
+        "name",
+        "auth.username",
+        "auth.password",
+        "deviceRefresh",
+        "dehumidifierMode",
+        "enableAirPurifier"
+      ]
+    },
+    {
+      "type": "fieldset",
+      "expandable": true,
+      "title": "Advanced Options",
+      "items": [
+        {
+          "key": "sessionKeyRefresh",
+          "description": "Session key only valid for only 12 hours. Time interval to proactivity refresh session key to prevent a fault. A value of 0 will disable refresh."
+        },
+        {
+          "key": "excludedDevices",
+          "title": "Excluded Devices",
+          "description": "A list of device ID to exclude from HomeKit. Obtain the device ID from Homebridge startup log.",
+          "add": "Add Another Device",
+          "type": "array",
+          "items": [
+            {
+              "type": "fieldset",
+              "items": ["excludedDevices[]"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
