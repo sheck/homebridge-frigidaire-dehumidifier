@@ -5,9 +5,10 @@ const constants = require("./constants.json")
 
 // URL constant for retrieving data
 
-const APIURL = "https://api.latam.ecp.electrolux.com"
+const APIURL = "https://api.us.ecp.electrolux.com"
 const BRAND = "Frigidaire"
 const COUNTRY = "US"
+const CLIENT_ID = "Gsdwexj38r1sXSXIPVdxj4DGoU5ZoaI6aW6ZckBI"
 
 // attributes
 const FIRMWARE_VERSION = "0011"
@@ -155,10 +156,11 @@ class Frigidaire extends EventEmitter {
   // throw an exception if the authentication request fails or returns an unexpected response.
   async authenticate() {
     var headers = {
-      "x-ibm-client-id": this.cid,
+      "x-ibm-client-id": CLIENT_ID,
+      "x-api-key": CLIENT_ID,
       "User-Agent": "Frigidaire/81 CFNetwork/1121.2.2 Darwin/19.2.0",
       "Content-Type": "application/json",
-      Authorization: "Basic dXNlcjpwYXNz",
+      Authorization: 'Basic ' + CLIENT_ID,
     }
 
     var authBody = {
