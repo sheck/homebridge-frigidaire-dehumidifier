@@ -377,10 +377,11 @@ class Frigidaire extends EventEmitter {
   async getRequest(endpoint) {
     var url = APIURL + endpoint
     var headers = {
-      "x-ibm-client-id": this.cid,
+      "x-ibm-client-id": CLIENT_ID,
+      "x-api-key": CLIENT_ID,
       "User-Agent": "Frigidaire/81 CFNetwork/1121.2.2 Darwin/19.2.0",
       "Content-Type": "application/json",
-      Authorization: "Basic dXNlcjpwYXNz",
+      Authorization: 'Basic ' + CLIENT_ID,
     }
 
     headers["session_token"] = this.sessionKey
@@ -572,10 +573,11 @@ class Frigidaire extends EventEmitter {
     var uri = POSTENDPOINT + urlDeviceString
 
     var headers = {
-      "x-ibm-client-id": this.cid,
+      "x-ibm-client-id": CLIENT_ID,
+      "x-api-key": CLIENT_ID,
       "User-Agent": "Frigidaire/81 CFNetwork/1121.2.2 Darwin/19.2.0",
       "Content-Type": "application/json",
-      Authorization: "Basic dXNlcjpwYXNz",
+      Authorization: 'Basic ' + CLIENT_ID,
     }
     headers["session_token"] = this.sessionKey
 
